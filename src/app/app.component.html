@@ -1,8 +1,1 @@
-<div class="m-4">
-    Enter Product Name : <input type="text" [(ngModel)]="name"><br>
-    Enter Product Price : <input type="number" [(ngModel)]="price"><br>
-    <button [disabled]="name == '' || price == 0" (click)="add()" class="btn btn-primary" type="button">Add</button>
-</div>
-
-
-<app-product (test)="edit($event)" [product]="productItem" *ngFor="let productItem of products"></app-product>
+<router-outlet></router-outlet>
