@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.authService.isLoggedIn) {
+    if (this.authService.isLoggedIn()) {
       this.router.navigate(['/dashboard']);
     }
   }
@@ -31,11 +31,9 @@ export class LoginComponent implements OnInit {
     this.validation();
     if (this.userName == 'admin' && this.password == 'admin') {
       console.log('login successful');
-      this.authService.isLoggedIn = true;
+      this.authService.login();
       this.router.navigate(['/dashboard']);
     }
-
-    this.authService.test = 'fbnm,ssnsm'
   }
 
   validation() {
