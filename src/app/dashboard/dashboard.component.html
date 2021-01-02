@@ -1,6 +1,6 @@
 <button (click)="logout()" class="btn btn-primary float-right m-4" type="button">Logout</button>
 <button [routerLink]="['/add-employee']" class="btn btn-primary" type="button">Add new Employee</button>
-<table class="table table-striped table-inverse table-responsive">
+<table *ngIf="!isLoading && employees.length!=0" class="table table-striped table-inverse table-responsive">
     <thead class="thead-inverse">
         <tr>
             <th>email</th>
@@ -10,13 +10,22 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let user of employee;index as i">
+        <tr *ngFor="let user of employees;index as i">
             <td scope="row"> {{ user.email }} </td>
-            <td scope="row"> </td>
-            <td scope="row"> </td>
+            <td scope="row">{{ user.firstName }}  </td>
+            <td scope="row"> {{user.lastName}}</td>
             <td scope="row"> <button [routerLink]="['/edit-employee/' + (i + 1)]" class="btn btn-primary"
                     type="button">Edit</button> </td>
-            <td scope="row"> <button class="btn btn-danger" type="button">Delete</button> </td>
+            <td scope="row"> <button (click)="deleteEmployee(i)" class="btn btn-danger" type="button">Delete</button> </td>
         </tr>
     </tbody>
 </table>
+
+<div style="margin: 200px 200px;" *ngIf="isLoading">
+    ...Loading
+</div>
+
+<div style="margin: 200px 200px;" *ngIf="employees.length == 0 && !isLoading">
+    No Employee to show
+</div>
+

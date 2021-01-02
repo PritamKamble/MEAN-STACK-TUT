@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { HttpClient } from "@angular/common/http";
 import { employees } from '../employee';
 
 @Component({
@@ -11,13 +10,12 @@ import { employees } from '../employee';
 })
 export class DashboardComponent implements OnInit {
 
-  users = [];
-  employee = employees;
+  isLoading = false;
+  employees = [];
 
   constructor(
     private router: Router,
     private authService: AuthService,
-    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -28,17 +26,22 @@ export class DashboardComponent implements OnInit {
   }
 
   getData() {
-    this.http.get('https://reqres.in/api/users?page=2').subscribe((res: any) => {
-      console.log('res', res.data);
-      this.users = res.data;
-    }, (err: any) => {
-      console.log('err', err)
-    });
+    this.isLoading = true;
+
+    setTimeout(() => {
+      this.employees = employees;
+      this.isLoading = false;
+    }, 1000);
+
   }
 
   logout() {
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  deleteEmployee(index) {
+    employees.splice(index, 1);
   }
 
 }

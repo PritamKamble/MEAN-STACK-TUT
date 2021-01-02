@@ -46,4 +46,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
+
+  test(event: Event) {
+    event.preventDefault();
+    this.invalidUserName=false
+  }
+
 }
