@@ -20,7 +20,10 @@
     "@angular/platform-browser-dynamic": "~9.1.11",
     "@angular/router": "~9.1.11",
     "bootstrap": "^4.5.3",
+    "ng-zorro-antd": "^11.0.1",
+    "ngx-toastr": "^13.2.0",
     "rxjs": "~6.5.4",
+    "sweetalert2": "^10.13.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AuthService } from '../auth.service';
 import { employees } from '../employee';
 
@@ -36,8 +37,24 @@ export class DashboardComponent implements OnInit {
   }
 
   logout() {
+    // this.showConfirmBox();
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  showConfirmBox() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will logged out of the system!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Logout!',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.value) {
+        this.logout();
+      }
+    })
   }
 
   deleteEmployee(index) {
