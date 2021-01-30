@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
-import Swal from "sweetalert2";
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -17,15 +14,11 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public authService: AuthService,
     private toastrService: ToastrService,
     private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/dashboard']);
-    }
     this.buildForm();
   }
 

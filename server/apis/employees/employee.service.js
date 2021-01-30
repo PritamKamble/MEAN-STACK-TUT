@@ -1,9 +1,8 @@
-const users = require('../../users.json');
 
 exports.getEmployees = () => {
-    return users;
+    return [];
 }
 
 exports.createEmployees = () => {
-    return users;
+    return [];
 }

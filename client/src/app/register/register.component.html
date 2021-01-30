@@ -1,19 +1,25 @@
 <div class="register">
+  <form [formGroup]="form">
     <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-            placeholder="Enter email">
+      <label for="exampleInputEmail1">Email address</label>
+      <input formControlName="email" type="email" class="form-control"
+        aria-describedby="emailHelp"
+        placeholder="Enter email">
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <label for="exampleInputPassword1">Password</label>
+      <input formControlName="passWord" type="password" class="form-control"
+        placeholder="Password">
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Confirm Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <label for="exampleInputPassword1">Confirm Password</label>
+      <input formControlName="confirmPassWord" type="password" class="form-control"
+        placeholder="Password">
     </div>
     <div>
-        <a [routerLink]="['/login']" class="badge badge-primary">Already have account login here</a>
+      <a [routerLink]="['/login']" class="badge badge-primary">Already have
+        account login here</a>
     </div>
-    <button type="submit" class="btn btn-primary">Register</button>
+    <button (click)="onRegisterClick()" type="submit" class="btn btn-primary">Register</button>
+  </form>
 </div>

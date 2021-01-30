@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { AuthService } from '../auth.service';
+// import { AuthService } from '../auth.service';
 import { employees } from '../employee';
 
 @Component({
@@ -16,13 +16,10 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService,
+    // private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
-    if (!this.authService.isLoggedIn) {
-      this.logout();
-    }
     this.getData();
   }
 
@@ -38,7 +35,7 @@ export class DashboardComponent implements OnInit {
 
   logout() {
     // this.showConfirmBox();
-    this.authService.logout();
+    // this.authService.logout();
     this.router.navigate(['/']);
   }
 
